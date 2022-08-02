@@ -13,6 +13,8 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
+    //volar支持element-plus
+    "types": ["element-plus/global"],
     "paths": {
       "@/*": ["./src/*"]
     }
