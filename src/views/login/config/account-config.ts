@@ -1,5 +1,5 @@
 export const rules = {
-  username: [
+  name: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
     {
       pattern: /^[a-z0-9]{5,12}$/,

@@ -1,27 +1,30 @@
 import ApiRequest from './request'
+import localCache from '@/utils/cache'
 
 const apiRequest = new ApiRequest({
-  baseURL: import.meta.env.VITE_BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_API,
   timeout: import.meta.env.VITE_TIMEOUT,
   interceptors: {
     requestInterceptor: (config) => {
       //携带token拦截
-      const token = ''
+      //解决Object is possibly 'undefined'.
+      if (config.headers === undefined) {
+        config.headers = {}
+      }
+      // 从localStorage中获取token
+      const token = localCache.getCache('token')
       if (token) {
         config.headers.Authorization = `Bearer ${token}`
       }
       return config
     },
     requestInterceptorCatch: (error) => {
-      console.log('请求拦截失败')
       return error
     },
     responseInterceptor: (res) => {
-      console.log('响应拦截成功')
       return res
     },
     responseInterceptorCatch: (error) => {
-      console.log('响应拦截失败')
       return error
     }
   }
