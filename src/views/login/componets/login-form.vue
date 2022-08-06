@@ -5,7 +5,7 @@
       <el-tab-pane name="account">
         <template #label>
           <span class="custom-tabs-label">
-            <el-icon><UserFilled /></el-icon>
+            <el-icon><IEpUserFilled /></el-icon>
             <span>账号登录</span>
           </span>
         </template>
@@ -14,7 +14,7 @@
       <el-tab-pane name="phone">
         <template #label>
           <span class="custom-tabs-label">
-            <el-icon><PhoneFilled /></el-icon>
+            <el-icon><IEpPhoneFilled /></el-icon>
             <span>手机登录</span>
           </span>
         </template>
@@ -34,7 +34,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { UserFilled, PhoneFilled } from '@element-plus/icons-vue'
 import LoginPhone from './login-phone.vue'
 import LoginAccount from './login-account.vue'
 
