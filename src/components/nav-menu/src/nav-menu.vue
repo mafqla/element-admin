@@ -68,7 +68,6 @@ const props = defineProps({
 })
 
 const handleMenuItemClick = (item: any) => {
-  console.log('--------')
   router.push({
     path: item.url ?? '/not-found'
   })
