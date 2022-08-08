@@ -5,7 +5,7 @@
       <span class="title">vue3 Ts</span>
     </div>
     <el-menu
-      default-active="2"
+      :default-active="defaultValue"
       class="el-menu-vertical"
       :collapse="collapse"
       background-color="#0c2135"
@@ -52,13 +52,20 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
+import { pathMapToMenu } from '@/utils/map-menus'
 
 const store = useStore()
 
 const userMenus = computed(() => store.state.login.userMenus)
 
 const router = useRouter()
+const route = useRoute()
+
+const currentPath = route.path
+
+const menu = pathMapToMenu(userMenus.value, currentPath)
+const defaultValue = menu.id + ''
 
 const props = defineProps({
   collapse: {
