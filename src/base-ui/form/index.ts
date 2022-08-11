@@ -1,4 +1,4 @@
 import BaseForm from './src/form.vue'
 
-export * from './src/type'
+export * from './types'
 export default BaseForm

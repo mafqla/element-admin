@@ -35,6 +35,7 @@ const handleFoldClick = () => {
   emit('foldChange', isFold.value)
 }
 
+// 面包屑的数据
 const store = useStore()
 const breadcrumbs = computed(() => {
   const userMenus = store.state.login.userMenus
@@ -43,6 +44,7 @@ const breadcrumbs = computed(() => {
   return pathMapBreadcrumbs(userMenus, currentPath)
 })
 </script>
+
 <style lang="scss" scoped>
 .nav-header {
   display: flex;

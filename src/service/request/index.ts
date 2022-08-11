@@ -13,6 +13,8 @@ class ApiRequest {
   constructor(config: ApiRequestConfig) {
     // 创建axios实例
     this.instance = axios.create(config)
+
+    // 保存基本信息
     this.showLoading = config.showLoading ?? DEAFULT_LOADING
     this.interceptors = config.interceptors
 

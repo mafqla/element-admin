@@ -2,7 +2,7 @@
   <div class="nav-menu">
     <div class="logo">
       <img class="img" src="~@/assets/img/logo.svg" alt="logo not found" />
-      <span class="title">vue3 Ts</span>
+      <span v-if="!collapse" class="title">vue3 Ts</span>
     </div>
     <el-menu
       :default-active="defaultValue"
@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
 import { pathMapToMenu } from '@/utils/map-menus'
@@ -65,7 +65,7 @@ const route = useRoute()
 const currentPath = route.path
 
 const menu = pathMapToMenu(userMenus.value, currentPath)
-const defaultValue = menu.id + ''
+const defaultValue = ref(menu.id + '')
 
 const props = defineProps({
   collapse: {

@@ -14,3 +14,4 @@ declare module '@vue/runtime-core' {
     $store: Store
   }
 }
+declare module '*.json'

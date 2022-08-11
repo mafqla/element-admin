@@ -9,7 +9,7 @@ import {
 } from '@/service/login/login'
 import localCahe from '@/utils/cache'
 import router from '@/router'
-import { mapMenusToRoutes } from '@/utils/map-menus'
+import { mapMenusToRoutes, mapMenusToPermissions } from '@/utils/map-menus'
 
 const loginModule: Module<ILoginState, IRootState> = {
   namespaced: true,
@@ -17,7 +17,8 @@ const loginModule: Module<ILoginState, IRootState> = {
     return {
       token: '',
       userInfo: {},
-      userMenus: []
+      userMenus: [],
+      permissions: []
     }
   },
   getters: {},
@@ -36,10 +37,13 @@ const loginModule: Module<ILoginState, IRootState> = {
       routes.forEach((route) => {
         router.addRoute('main', route)
       })
+      // 获取用户按钮的权限
+      const permissions = mapMenusToPermissions(userMenus)
+      state.permissions = permissions
     }
   },
   actions: {
-    async accountLoginAction({ commit }, payload: IAccount) {
+    async accountLoginAction({ commit, dispatch }, payload: IAccount) {
       // commit('accountLoginMutation', payload)
       // console.log('---执行accountLoginAction---', payload)
       const loginResult = await accountLoginRequest(payload)
@@ -49,6 +53,8 @@ const loginModule: Module<ILoginState, IRootState> = {
       commit('changeToken', token)
       // 存储token
       localCahe.setCache('token', token)
+      // 发送初始化的请求(完整的role/department)
+      dispatch('getInitialDataAction', null, { root: true })
 
       // 请求用户信息
       const userInfoResult = await requestUserInfoById(id)
@@ -61,6 +67,7 @@ const loginModule: Module<ILoginState, IRootState> = {
       const userMenusResult = await requestUserMenusByRoleId(userInfo.role.id)
       const userMenus = userMenusResult.data
       // console.log('---执行accountLoginAction---', userMenus)
+      commit('changeUserMenus', userMenus)
       // 缓存用户菜单
       localCahe.setCache('userMenus', userMenus)
 
@@ -72,10 +79,12 @@ const loginModule: Module<ILoginState, IRootState> = {
     //   console.log('---执行phoneLoginAction---', payload)
     // }
 
-    loadLocalLogin({ commit }) {
+    loadLocalLogin({ commit, dispatch }) {
       const token = localCahe.getCache('token')
       if (token) {
         commit('changeToken', token)
+        // 发送初始化的请求(完整的role/department)
+        dispatch('getInitialDataAction', null, { root: true })
       }
       const userInfo = localCahe.getCache('userInfo')
       if (userInfo) {
