@@ -7,8 +7,8 @@ import store from './store'
 
 import './assets/css/main.scss'
 import { setupStore } from './store'
-import ElementPlus from 'element-plus'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+// import ElementPlus from 'element-plus'
+// import zhCn from 'element-plus/es/locale/lang/zh-cn'
 const app = createApp(App)
 
 /**
@@ -23,7 +23,7 @@ app.use(store)
 setupStore()
 app.use(router)
 
-app.use(ElementPlus, {
-  locale: zhCn
-})
+// app.use(ElementPlus, {
+//   locale: zhCn
+// })
 app.mount('#app')

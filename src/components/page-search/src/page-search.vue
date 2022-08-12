@@ -28,8 +28,6 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['resetBtnClick', 'queryBtnClick'])
-
 // 双向绑定的属性应该是由配置文件的field来决定
 // 1. formData中的属性应该动态来决定
 const formItems = props.searchFormConfig?.formItems ?? []
@@ -39,6 +37,7 @@ for (const item of formItems) {
 }
 const formData = ref(formOriginData)
 
+const emit = defineEmits(['resetBtnClick', 'queryBtnClick'])
 // 2. 当用户点击重置
 const handleResetClick = () => {
   formData.value = formOriginData

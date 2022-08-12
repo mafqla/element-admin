@@ -11,13 +11,13 @@
       pageName="users"
       @newBtnClick="handleNewData"
       @editBtnClick="handleEditData"
-    ></page-content>
+    />
     <page-modal
       :defaultInfo="defaultInfo"
       ref="pageModalRef"
       pageName="users"
       :modalConfig="modalConfigRef"
-    ></page-modal>
+    />
   </div>
 </template>
 

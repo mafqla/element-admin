@@ -58,7 +58,7 @@
 </template>
 
 <script setup lang="ts">
-import {} from 'vue'
+import type { PropType } from 'vue'
 
 const props = defineProps({
   title: {
@@ -74,7 +74,7 @@ const props = defineProps({
     default: 0
   },
   propList: {
-    type: Array,
+    type: Array as PropType<any[]>,
     required: true
   },
   showIndexColumn: {
