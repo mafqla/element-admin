@@ -79,5 +79,7 @@ const handleConfirmClick = () => {
     })
   }
 }
+
+defineExpose({ dialogVisible })
 </script>
 <style lang="scss" scoped></style>

@@ -115,6 +115,7 @@ const getPageData = (queryInfo: any = {}) => {
   })
 }
 getPageData()
+defineExpose({ getPageData })
 
 // 3.从vuex中获取数据
 const dataList = computed(() =>

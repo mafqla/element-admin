@@ -74,8 +74,8 @@ const props = defineProps({
     default: 0
   },
   propList: {
-    type: Array as PropType<any[]>,
-    required: true
+    type: Array as PropType<any[]>
+    // required: true
   },
   showIndexColumn: {
     type: Boolean,
