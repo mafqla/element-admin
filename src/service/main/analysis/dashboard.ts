@@ -7,25 +7,25 @@ enum DashboardAPI {
   addressGoodsSale = '/goods/address/sale'
 }
 
-export function getCategoryGoodsCount() {
+export function getCategoryGoodsCount(): any {
   return apiRequest.get({
     url: DashboardAPI.categoryGoodsCount
   })
 }
 
-export function getCategoryGoodsSale() {
+export function getCategoryGoodsSale(): any {
   return apiRequest.get({
     url: DashboardAPI.categoryGoodsSale
   })
 }
 
-export function getCategoryGoodsFavor() {
+export function getCategoryGoodsFavor(): any {
   return apiRequest.get({
     url: DashboardAPI.categoryGoodsFavor
   })
 }
 
-export function getAddressGoodsSale() {
+export function getAddressGoodsSale(): any {
   return apiRequest.get({
     url: DashboardAPI.addressGoodsSale
   })

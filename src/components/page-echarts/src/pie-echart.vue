@@ -1,6 +1,6 @@
 <template>
   <div class="pie-echart">
-    <base-echart :options="options"></base-echart>
+    <base-echart :options="(options as any)"></base-echart>
   </div>
 </template>
 
